@@ -1,0 +1,81 @@
+<!-- antrenor_mesajlasma.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antrenor Mesajlaşma</title>
+
+    <style>
+        body {
+            margin: 20px;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        h1, h2 {
+            color: #333;
+            text-align: center;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Antrenor Mesajlaşma Sayfası</h1>
+
+    <!-- Mesaj Gönderme Formu -->
+    <h2>Mesaj Gönder</h2>
+    <form method="post" action="{{ url_for('antrenor_mesajlasma') }}">
+        <!-- Gonderen Eposta'yi hidden input olarak ekleyin -->
+        <input type="hidden" name="gonderen_eposta" value="{{ antrenor_eposta }}">
+
+        <label for="alici_eposta">Alıcı E-posta:</label>
+        <input type="text" id="alici_eposta" name="alici_eposta" required>
+
+        <label for="icerik">Mesaj İçeriği:</label>
+        <textarea id="icerik" name="icerik" required></textarea>
+
+        <input type="submit" value="Mesaj Gönder">
+    </form>
+
+</body>
+</html>

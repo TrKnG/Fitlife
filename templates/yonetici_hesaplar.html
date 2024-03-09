@@ -1,0 +1,96 @@
+<!-- templates/yonetici_hesaplar.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hesaplar</title>
+
+    <style>
+        body {
+            margin: 20px;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Yönetici Hesaplar</h1>
+    <form method="post">
+        <table>
+            <tr>
+                <th>İsim</th>
+                <th>Soyisim</th>
+                <th>Aktif</th>
+            </tr>
+            {% for antrenor in antrenor_bilgileri %}
+            <tr>
+                <td>{{ antrenor['isim'] }}</td>
+                <td>{{ antrenor['soyisim'] }}</td>
+                <td>
+                    <input type="checkbox" name="antrenor_{{ antrenor['isim'] }}" {% if antrenor['aktif'] %}checked{% endif %}>
+                </td>
+            </tr>
+            {% endfor %}
+            {% for sporcu in sporcu_bilgileri %}
+            <tr>
+                <td>{{ sporcu['isim'] }}</td>
+                <td>{{ sporcu['soyisim'] }}</td>
+                <td>
+                    <input type="checkbox" name="sporcu_{{ sporcu['isim'] }}" {% if sporcu['aktif'] %}checked{% endif %}>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <button type="submit">Kaydet</button>
+    </form>
+</body>
+</html>

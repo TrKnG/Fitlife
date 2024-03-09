@@ -1,0 +1,103 @@
+<!-- templates/antrenor_sayfasi.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antrenör Sayfası</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        img {
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .profile-info {
+            margin-top: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .profile-info p {
+            margin: 10px 0;
+        }
+
+        .button-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hoş Geldiniz</h1>
+
+    <!-- Profil Bilgileri -->
+    <div class="profile-info">
+        <img src="{{ url_for('static', filename=profil_fotografi) }}" alt="Profil Fotoğrafı">
+        <p><strong>İsim:</strong> {{ isim }}</p>
+        <p><strong>Soyisim:</strong> {{ soyisim }}</p>
+        <p><strong>Telefon:</strong> {{ telefon }}</p>
+        <p><strong>E-posta:</strong> {{ eposta }}</p>
+    </div>
+
+    <!-- Butonlar -->
+    <div class="button-container">
+
+        <!-- Deneyimler Butonu -->
+        <a href="{{ url_for('antrenor_deneyim', antrenor_eposta=eposta) }}"><button>Deneyimler</button></a>
+
+        <!-- Sporcular Butonu -->
+        <a href="{{ url_for('antrenor_sporcular', antrenor_eposta=eposta) }}"><button>Sporcular</button></a>
+
+        <!-- Mesaj Gönder Butonu -->
+        <a href="{{ url_for('antrenor_mesajlasma', antrenor_eposta=eposta) }}"><button>Mesaj Gönder</button></a>
+
+        <!-- Gelen Mesajlar Butonu -->
+        <a href="{{ url_for('antrenor_gelen_mesajlar', antrenor_eposta=eposta) }}"><button>Gelen Mesajlar</button></a>
+
+        <!-- Egzersiz Planı Hazırla Butonu -->
+        <a href="{{ url_for('egzersiz_plan_hazirla') }}"><button>Egzersiz Planı Hazırla</button></a>
+
+        <!-- Beslenme Planı Hazırla Butonu -->
+        <a href="{{ url_for('beslenme_plan_hazirla') }}"><button>Beslenme Planı Hazırla</button></a>
+
+        <!-- İlerleme Kayıtları Butonu -->
+        <a href="{{ url_for('antrenor_ilerleme_kayitlari') }}"><button>İlerleme Kayıtları</button></a>
+    </div>
+</body>
+</html>

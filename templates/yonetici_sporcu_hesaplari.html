@@ -1,0 +1,153 @@
+<!-- templates/yonetici_sporcu_hesaplari.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sporcu Hesapları</title>
+    <style>
+        body {
+            margin: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .media-container {
+            max-width: 100px;
+            max-height: 100px;
+            overflow: hidden;
+        }
+
+        .media-container img,
+        .media-container video {
+            width: 150px;
+            height: 150px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Yönetici Sporcu Hesapları</h1>
+
+    <!-- Sporcu Bilgileri Listesi -->
+    <table>
+        <tr>
+            <th>E-Posta</th>
+            <th>İsim</th>
+            <th>Soyisim</th>
+            <th>Telefon</th>
+            <th>Profil Fotoğrafı</th>
+        </tr>
+        <!-- Bu kısmı, gerçek veri ile doldurmanız gerekiyor -->
+        {% for sporcu in sporcu_bilgileri %}
+            <tr>
+                <td>{{ sporcu.eposta }}</td>
+                <td>{{ sporcu.isim }}</td>
+                <td>{{ sporcu.soyisim }}</td>
+                <td>{{ sporcu.telefon }}</td>
+                <td class="media-container"><img src="{{ url_for('static', filename=sporcu.profil_fotografi) }}" alt="Profil Fotoğrafı"></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <!-- Beslenme Planları Listesi -->
+    <h2>Beslenme Planları</h2>
+    {% for sporcu in sporcu_bilgileri %}
+        <h3>{{ sporcu.isim }} {{ sporcu.soyisim }}</h3>
+        <table>
+            <tr>
+                <th>Günlük Ogunler</th>
+                <th>Hedef</th>
+                <th>Kalori Hedefi</th>
+            </tr>
+            {% for beslenme_plan in sporcu.beslenme_plan %}
+                <tr>
+                    <td>{{ beslenme_plan.gunluk_ogunler }}</td>
+                    <td>{{ beslenme_plan.hedef }}</td>
+                    <td>{{ beslenme_plan.kalori_hedefi }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endfor %}
+
+    <!-- Egzersiz Planları Listesi -->
+    <h2>Egzersiz Planları</h2>
+    {% for sporcu in sporcu_bilgileri %}
+        <h3>{{ sporcu.isim }} {{ sporcu.soyisim }}</h3>
+        <table>
+            <tr>
+                <th>Egzersiz Adı</th>
+                <th>Hedef</th>
+                <th>Set Sayısı</th>
+                <th>Tekrar Sayısı</th>
+                <th>Video Path</th>
+            </tr>
+            {% for egzersiz_plan in sporcu.egzersiz_plan %}
+                <tr>
+                    <td>{{ egzersiz_plan.egzersiz_adi }}</td>
+                    <td>{{ egzersiz_plan.hedef }}</td>
+                    <td>{{ egzersiz_plan.set_sayisi }}</td>
+                    <td>{{ egzersiz_plan.tekrar_sayisi }}</td>
+                    <td class="media-container"><video controls><source src="{{ url_for('static', filename=egzersiz_plan.video_path) }}" type="video/mp4">Tarayıcınız video etiketini desteklemiyor.</video></td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endfor %}
+
+    <!-- İlerleme Kayıtları Listesi -->
+    <h2>İlerleme Kayıtları</h2>
+    {% for sporcu in sporcu_bilgileri %}
+        <h3>{{ sporcu.isim }} {{ sporcu.soyisim }}</h3>
+        <table>
+            <tr>
+                <th>BKI</th>
+                <th>Boy</th>
+                <th>Kas Oranı</th>
+                <th>Kilo</th>
+                <th>Resim</th>
+                <th>Tarih</th>
+                <th>Yağ Oranı</th>
+            </tr>
+            {% for ilerleme in sporcu.ilerleme %}
+                <tr>
+                    <td>{{ ilerleme.bki }}</td>
+                    <td>{{ ilerleme.boy }}</td>
+                    <td>{{ ilerleme.kas_orani }}</td>
+                    <td>{{ ilerleme.kilo }}</td>
+                    <td class="media-container"><img src="{{ url_for('static', filename=ilerleme.resim) }}" alt="İlerleme Resmi"></td>
+                    <td>{{ ilerleme.tarih }}</td>
+                    <td>{{ ilerleme.yag_orani }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endfor %}
+
+</body>
+</html>

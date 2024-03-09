@@ -1,0 +1,62 @@
+<!-- templates/antrenor_sporcular.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antrenor Sporcular</title>
+
+    <style>
+        body {
+            margin: 20px;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        li {
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+
+        strong {
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <h1>Antrenor Sporcular Sayfası</h1>
+    <p>Antrenor E-posta: {{ antrenor_eposta }}</p>
+
+    <!-- Sporcu Bilgilerini Listele -->
+    <ul>
+        {% for sporcu in sporcular %}
+            <li>
+                <strong>Sporcu E-Posta:</strong> {{ sporcu.sporcu_eposta }}<br>
+                <!-- Diğer sporcu bilgilerini buraya ekleyebilirsiniz -->
+            </li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>

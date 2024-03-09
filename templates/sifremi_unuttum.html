@@ -1,0 +1,102 @@
+<!-- sifremi_unuttum.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Şifremi Unuttum</title>
+    <style>
+        body {
+            margin: 20px;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Şifremi Unuttum</h1>
+
+    <form action="{{ url_for('sifremi_goster') }}" method="post">
+        <label for="kullanici_tipi">Kullanıcı Tipi:</label>
+        <select id="kullanici_tipi" name="kullanici_tipi" required>
+            <option value="sporcu">Sporcu</option>
+            <option value="antrenor">Antrenör</option>
+            <option value="yonetici">Yönetici</option>
+        </select>
+
+        <label for="eposta">E-posta:</label>
+        <input type="email" id="eposta" name="eposta" required>
+
+        <button type="submit" name="action" value="sifremi_goster">Şifremi Göster</button>
+    </form>
+
+    <h1>Şifremi Değiştir</h1>
+
+    <form action="{{ url_for('sifre_degistir') }}" method="post">
+
+        <select id="kullanici_tipi" name="kullanici_tipi" required>
+            <option value="sporcu">Sporcu</option>
+            <option value="antrenor">Antrenör</option>
+            <option value="yonetici">Yönetici</option>
+        </select>
+
+        <label for="eposta">E-posta:</label>
+        <input type="email" id="eposta" name="eposta" required><br>
+
+        <label for="eski_sifre">Eski Şifre:</label>
+        <input type="password" id="eski_sifre" name="eski_sifre" required><br>
+
+        <label for="yeni_sifre">Yeni Şifre:</label>
+        <input type="password" id="yeni_sifre" name="yeni_sifre" required><br>
+
+        <label for="onay_sifre">Onay Şifre:</label>
+        <input type="password" id="onay_sifre" name="onay_sifre" required><br>
+
+        <button type="submit" name="action" value="sifre_degistir">Şifremi Değiştir</button>
+    </form>
+</body>
+</html>

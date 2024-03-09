@@ -1,0 +1,113 @@
+<!-- templates/sporcu_sayfasi.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sporcu Sayfası</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        img {
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .profile-info {
+            margin-top: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .profile-info p {
+            margin: 10px 0;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hoş Geldiniz</h1>
+
+    <!-- Profil Bilgileri -->
+    <div class="profile-info">
+        <img src="{{ url_for('static', filename=profil_fotografi) }}" alt="Profil Fotoğrafı">
+        <p><strong>İsim:</strong> {{ isim }}</p>
+        <p><strong>Soyisim:</strong> {{ soyisim }}</p>
+        <p><strong>Telefon:</strong> {{ telefon }}</p>
+        <p><strong>E-posta:</strong> {{ eposta }}</p>
+    </div>
+
+    <!-- Antrenör Seçme Butonu -->
+    <div>
+        <form method="POST" action="{{ url_for('sporcu_sayfasi', eposta=eposta) }}">
+            <input type="hidden" name="antrenor_sec_form" value="1">
+            <button type="submit">Antrenör Seçme</button>
+        </form>
+    </div>
+
+    <!-- Planlar Butonları -->
+    <div>
+        <form method="POST" action="{{ url_for('sporcu_sayfasi', eposta=eposta) }}">
+            <input type="hidden" name="egzersiz_planlari_form" value="1">
+            <button type="submit">Egzersiz Planları</button>
+        </form>
+
+        <form method="POST" action="{{ url_for('sporcu_sayfasi', eposta=eposta) }}">
+            <input type="hidden" name="beslenme_planlari_form" value="1">
+            <button type="submit">Beslenme Planları</button>
+        </form>
+    </div>
+
+    <!-- Mesajlaşma Butonu -->
+    <div>
+
+        <form method="POST" action="{{ url_for('sporcu_sayfasi', eposta=eposta) }}">
+            <input type="hidden" name="sporcu_mesajlasma_form" value="1">
+            <button type="submit">Mesaj Gönder</button>
+        </form>
+
+        <form method="POST" action="{{ url_for('sporcu_sayfasi', eposta=eposta) }}">
+            <input type="hidden" name="sporcu_gelen_mesajlar_form" value="1">
+            <button type="submit">Gelen Mesajlar</button>
+        </form>
+
+    </div>
+
+    <!-- İlerleme Kayıt Butonu -->
+    <div>
+        <a href="{{ url_for('ilerleme_kayit', eposta=eposta) }}"><button>İlerleme Kayıt</button></a>
+    </div>
+
+</body>
+</html>

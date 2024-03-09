@@ -1,0 +1,89 @@
+<!-- templates/ilerleme_kayitlari.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İlerleme Kayıtları</title>
+    <style>
+        body {
+            margin: 20px;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        p {
+            margin-top: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 12px;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .media-container img {
+            max-width: 100px;
+            max-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>İlerleme Kayıtları</h1>
+    <p>Sporcu E-posta: {{ sporcu_eposta }}</p>
+    <table>
+        <tr>
+            <th>Tarih</th>
+            <th>Kilo</th>
+            <th>Boy</th>
+            <th>Kas Oranı</th>
+            <th>Yağ Oranı</th>
+            <th>BKI</th>
+            <th>Resim</th> <!-- Yeni sütun başlığı -->
+        </tr>
+        {% for kayit in ilerleme_kayitlari %}
+            <tr>
+                <td>{{ kayit['tarih'] }}</td>
+                <td>{{ kayit['kilo'] }}</td>
+                <td>{{ kayit['boy'] }}</td>
+                <td>{{ kayit['kas_orani'] }}</td>
+                <td>{{ kayit['yag_orani'] }}</td>
+                <td>{{ kayit['bki'] }}</td>
+                <td class="media-container"><img src="{{ url_for('static', filename=kayit.resim) }}" alt="İlerleme"></td>
+            </tr>
+            <tr>
+                <td colspan="7">&nbsp;</td>  <!-- Boşluk satırı ekleyerek kayıtlar arasında boşluk bırakma -->
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

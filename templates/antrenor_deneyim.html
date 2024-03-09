@@ -1,0 +1,76 @@
+<!-- templates/antrenor_deneyim.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antrenör Deneyim</title>
+    <style>
+        body {
+            margin: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0;
+            text-decoration: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Antrenör Deneyimleri</h1>
+
+    <!-- Antrenörün Deneyimleri Listesi -->
+    <table>
+        <tr>
+            <th>Tecrübe Yılı</th>
+            <th>Deneyimler</th>
+            <th>Tarih</th>
+        </tr>
+        {% for deneyim in deneyimler %}
+            <tr>
+                <td>{{ deneyim.tecrube_yili }}</td>
+                <td>{{ deneyim.deneyimler }}</td>
+                <td>{{ deneyim.tarih }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <!-- Deneyim Ekle Butonu -->
+    <a href="{{ url_for('antrenor_deneyim_ekle', antrenor_eposta=antrenor_eposta) }}">
+        <button>Deneyim Ekle</button>
+    </a>
+</body>
+</html>

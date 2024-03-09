@@ -1,0 +1,66 @@
+<!-- templates/antrenor_gelen_mesajlar.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antrenor Gelen Mesajlar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa;  /* Açık mavi tonu */
+            margin: 20px;
+        }
+
+        h1 {
+            color: #004d40;  /* Koyu yeşil tonu */
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #c8e6c9;  /* Açık yeşil tonu */
+            border: 1px solid #388e3c;  /* Orta yeşil tonu */
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        li:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        strong {
+            font-weight: bold;
+            color: #004d40;  /* Koyu yeşil tonu */
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #81c784;  /* Orta açık yeşil tonu */
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Antrenor Gelen Mesajlar</h1>
+
+    <!-- Gelen Mesajlar -->
+    {% for mesaj in gelen_mesajlar %}
+        <li>
+            <strong>Gönderen:</strong> {{ mesaj.gonderen_eposta }}<br>
+            <strong>Alıcı:</strong> {{ mesaj.alici_eposta }}<br>
+            <strong>İçerik:</strong> {{ mesaj.icerik }}<br>
+            <strong>Tarih:</strong> {{ mesaj.tarih }}<br>
+            <hr>
+        </li>
+    {% endfor %}
+</body>
+</html>

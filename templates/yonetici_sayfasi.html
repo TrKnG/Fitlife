@@ -1,0 +1,103 @@
+<!-- templates/yonetici_sayfasi.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yönetici Sayfası</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        img {
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .profile-info {
+            margin-top: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .profile-info p {
+            margin: 10px 0;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        button {
+            margin: 10px;
+            padding: 15px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Yönetici Sayfası</h1>
+
+    <!-- Profil Bilgileri -->
+    <div class="profile-info">
+        <img src="{{ url_for('static', filename=profil_fotografi) }}" alt="Profil Fotoğrafı">
+        <p><strong>İsim:</strong> {{ isim }}</p>
+        <p><strong>Soyisim:</strong> {{ soyisim }}</p>
+        <p><strong>Telefon:</strong> {{ telefon }}</p>
+        <p><strong>E-posta:</strong> {{ eposta }}</p>
+    </div>
+
+    <!-- Butonlar -->
+    <!-- Antrenör Hesapları Butonu -->
+    <div class="button-container">
+        <form method="POST" action="{{ url_for('yonetici_sayfasi') }}">
+            <input type="hidden" name="yonetici_antrenor_hesaplari_form" value="1">
+            <button type="submit">Antrenörler</button>
+        </form>
+    </div>
+
+    <!-- Sporcu Hesapları Butonu -->
+    <div class="button-container">
+        <form method="POST" action="{{ url_for('yonetici_sayfasi') }}">
+            <input type="hidden" name="yonetici_sporcu_hesaplari_form" value="1">
+            <button type="submit">Sporcular</button>
+        </form>
+    </div>
+
+    <!-- Hesaplar Butonu -->
+    <div class="button-container">
+        <form method="POST" action="{{ url_for('yonetici_sayfasi') }}">
+            <input type="hidden" name="hesap_durumu_form" value="1">
+            <button type="submit">Hesap Durumu</button>
+        </form>
+    </div>
+
+</body>
+</html>

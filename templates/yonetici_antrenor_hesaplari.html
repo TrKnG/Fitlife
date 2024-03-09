@@ -1,0 +1,94 @@
+<!-- templates/yonetici_antrenor_hesaplari.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antrenör Hesapları</title>
+    <style>
+        body {
+            margin: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0;
+            text-decoration: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Antrenör Hesapları</h1>
+
+    <!-- Antrenör Bilgileri Listesi -->
+    <table>
+        <tr>
+            <th>Eposta</th>
+            <th>İsim</th>
+            <th>Soyisim</th>
+            <th>Telefon</th>
+            <th>Profil Fotoğrafı</th>
+            <th>Aktif</th>
+            <th>Deneyimler</th>
+            <th>Sporcular</th>
+        </tr>
+        {% for antrenor in antrenor_bilgileri %}
+            <tr>
+                <td>{{ antrenor.eposta }}</td>
+                <td>{{ antrenor.isim }}</td>
+                <td>{{ antrenor.soyisim }}</td>
+                <td>{{ antrenor.telefon }}</td>
+                <td><img src="{{ url_for('static', filename=antrenor.profil_fotografi) }}" alt="Profil Fotoğrafı" style="max-width: 50px; max-height: 50px;"></td>
+                <td>{{ antrenor.aktif }}</td>
+                <td>
+                    <ul>
+                        {% for deneyim in antrenor.deneyimler %}
+                            <li>Tecrübe Yılı: {{ deneyim.tecrube_yili }}, Deneyimler: {{ deneyim.deneyimler }}, Tarih: {{ deneyim.tarih }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        {% for sporcu in antrenor.sporcular %}
+                            <li>Sporcu Eposta: {{ sporcu.sporcu_eposta }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!-- templates/ilerleme_kayit.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İlerleme Kayıt</title>
+    <style>
+        body {
+            margin: 20px;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"],
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        input[type="submit"],
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover,
+        button:hover {
+            background-color: #45a049;
+        }
+
+        div.button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>İlerleme Kayıt</h1>
+    <form method="post" action="{{ url_for('ilerleme_kayit', eposta=sporcu_eposta) }}" enctype="multipart/form-data">
+        <label for="kilo">Kilo:</label>
+        <input type="text" name="kilo" required><br>
+
+        <label for="boy">Boy:</label>
+        <input type="text" name="boy" required><br>
+
+        <label for="kas_orani">Kas Oranı:</label>
+        <input type="text" name="kas_orani" required><br>
+
+        <label for="yag_orani">Yağ Oranı:</label>
+        <input type="text" name="yag_orani" required><br>
+
+        <label for="bki">Boy-kilo İndeksi:</label>
+        <input type="text" name="bki" required><br>
+
+        <label for="resim">Profil Resmi:</label>
+        <input type="file" name="resim" accept="image/*"><br>
+
+        <input type="submit" value="Kaydet">
+    </form>
+
+    <!-- İlerleme Kayıtları Butonu -->
+    <div class="button-container">
+        <a href="{{ url_for('ilerleme_kayitlari', sporcu_eposta=sporcu_eposta) }}"><button>İlerleme Kayıtları</button></a>
+    </div>
+</body>
+</html>

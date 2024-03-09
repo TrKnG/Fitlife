@@ -1,0 +1,50 @@
+<!-- sifremi_goster.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Şifremi Göster</title>
+    <style>
+        body {
+            margin: 20px;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p, span {
+            display: block;
+            margin: 20px;
+            padding: 10px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        span {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        p {
+            color: #d9534f;
+        }
+    </style>
+</head>
+<body>
+    <h1>Şifremi Göster</h1>
+
+    {% if girilen_sifre %}
+        <span>Kullanıcının Şifresi: {{ girilen_sifre }}</span>
+    {% else %}
+        <p>Şifre bulunamadı veya hatalı. Lütfen doğru bilgileri girin.</p>
+    {% endif %}
+</body>
+</html>

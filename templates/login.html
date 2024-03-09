@@ -1,0 +1,88 @@
+<!-- templates/login.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş</title>
+    <style>
+        body {
+            margin: 20px;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Giriş</h1>
+    <form method="POST">
+        <label for="eposta">E-posta:</label>
+        <input type="email" id="eposta" name="eposta" required>
+
+        <label for="sifre">Şifre:</label>
+        <input type="password" id="sifre" name="sifre" required>
+
+        <label for="kullanici_tipi">Kullanıcı Tipi:</label>
+        <select id="kullanici_tipi" name="kullanici_tipi" required>
+            <option value="yonetici">Yönetici</option>
+            <option value="antrenor">Antrenör</option>
+            <option value="sporcu">Sporcu</option>
+        </select>
+
+        <button type="submit">Giriş</button>
+    </form>
+    <a href="{{ url_for('sifremi_unuttum') }}">Şifremi Unuttum</a>
+</body>
+</html>

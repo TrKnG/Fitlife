@@ -1,0 +1,75 @@
+<!-- sporcu_antrenor_sec.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sporcu Antrenör Seçimi</title>
+
+    <style>
+        body {
+            margin: 20px;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sporcu Antrenör Seçimi</h1>
+
+    <form method="post" action="{{ url_for('sporcu_antrenor_sec', eposta=eposta) }}">
+        <label for="antrenor_sec">Antrenör Seç:</label>
+        <select id="antrenor_sec" name="antrenor_sec" required>
+            {% for antrenor in antrenor_listesi %}
+                <option value="{{ antrenor.id }}">{{ antrenor.isim }} {{ antrenor.soyisim }}</option>
+            {% endfor %}
+        </select>
+
+        <input type="submit" value="Antrenörü Seç">
+    </form>
+</body>
+</html>
